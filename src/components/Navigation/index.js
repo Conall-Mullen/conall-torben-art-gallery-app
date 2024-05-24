@@ -5,15 +5,10 @@ export default function Navigation({ pieces }) {
   return (
     <>
       <h2>Pieces</h2>
-      <ul>
-        {pieces.map(({ slug, name, index, artist }) => (
-          <li key={index}>
-            <Link href={`./art-pieces/${slug}`}>
-              {name} by {artist}
-            </Link>
-          </li>
-        ))}
-      </ul>
+
+      <Link href={`./`}>Spotlight</Link>
+      <Link href={`./art-pieces`}>Art Pieces</Link>
+      <Link href={`./favourites`}>Favourites</Link>
     </>
   );
 }

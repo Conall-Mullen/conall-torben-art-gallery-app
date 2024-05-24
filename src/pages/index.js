@@ -1,9 +1,5 @@
 import Layout from "../components/Layout";
 
 export default function HomePage({ pieces }) {
-  return (
-    <>
-      <Layout pieces={pieces} />
-    </>
-  );
+  return <></>;
 }
