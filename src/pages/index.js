@@ -1,4 +1,5 @@
 import useSWR from "swr";
+import ArtPieces from "../components/Art Pieces";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -17,13 +18,14 @@ export default function HomePage() {
     return res.json();
   };
 
-  const { data, error } = useSWR(URL, fetcher);
+  const { data, isLoading, error } = useSWR(URL, fetcher);
+  const pieces = data;
 
-  console.log(data);
+  if (isLoading) return <h1>is loading</h1>;
 
   return (
-    <div>
-      <h1>Hello from Next.js</h1>
-    </div>
+    <>
+      <ArtPieces pieces={pieces} />
+    </>
   );
 }
