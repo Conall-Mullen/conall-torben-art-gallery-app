@@ -8,7 +8,7 @@ export default function ArtPiecePreview({
 }) {
   return (
     <>
-      <span>{title}</span>
+      <label>{title}</label>
       <Image
         alt={title}
         src={image}

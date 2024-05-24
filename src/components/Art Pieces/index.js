@@ -9,7 +9,7 @@ export default function ArtPieces({ pieces }) {
         <div key="index">
           <ArtPiecePreview
             image={piece.imageSource}
-            title={piece.title}
+            title={piece.name}
             artist={piece.artist}
             width={piece.dimensions.width}
             height={piece.dimensions.height}
