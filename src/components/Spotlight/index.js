@@ -9,7 +9,7 @@ export default function Spotlight({ pieces }) {
         src={thisPiece.imageSource}
         alt={thisPiece.genre}
         height={thisPiece.dimensions.height / 4}
-        width={thisPiece.dimensions.width}
+        width={thisPiece.dimensions.width / 4}
       />
       <h3>{thisPiece.artist}</h3>
     </>
