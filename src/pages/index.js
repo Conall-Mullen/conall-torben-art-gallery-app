@@ -1,13 +1,10 @@
 import Layout from "../components/Layout";
 import Spotlight from "../components/Spotlight";
 
-export default function HomePage({ pieces }) {
-
+export default function SpotlightPage({ pieces }) {
   return (
     <>
-      <Layout pieces={pieces} />
       <Spotlight pieces={pieces} />
     </>
   );
-
 }

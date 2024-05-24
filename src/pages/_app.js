@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import HomePage from ".";
 import useSWR from "swr";
 import Layout from "../components/Layout";
@@ -26,12 +26,24 @@ export default function App({ Component, pageProps }) {
 
   console.log(artPieces);
 
-  if (isLoading) return <h1>Loading...</h1>;
-  // setArtPieces(data);
+  useEffect(() => {
+    if (data) {
+      setArtPieces(data);
+    }
+  }, [data]);
+
+  console.log("art pieces", artPieces);
   return (
     <>
-      <Component {...pageProps} pieces={data} />
-      <Layout />
+      {/* if the array is filled with data then return the componenets and drill the props if not return a loading screen */}
+      {artPieces.length > 0 ? (
+        <>
+          <Component {...pageProps} pieces={artPieces} />
+          <Layout pieces={artPieces} />
+        </>
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </>
   );
 }
