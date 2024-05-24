@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+
 import Image from "next/image";
 
 export default function PieceDetail({ pieces }) {
@@ -22,6 +23,7 @@ export default function PieceDetail({ pieces }) {
         width={currentPiece.dimensions.width / 4}
         height={currentPiece.dimensions.height / 4}
       ></Image>
+
     </>
   );
 }
