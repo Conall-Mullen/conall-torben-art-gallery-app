@@ -7,7 +7,8 @@ export default function ArtPieces({ pieces }) {
   return (
     <>
       {pieces.map((piece, index) => (
-        <ul key="index" style="list-style-type : none">
+        <ul key="index">
+          {" "}
           <Link href={`./art-pieces/${piece.slug}`}>
             <ArtPiecePreview
               image={piece.imageSource}
