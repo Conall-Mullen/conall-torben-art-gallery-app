@@ -8,14 +8,14 @@ export default function ArtPiecePreview({
 }) {
   return (
     <>
-      <label>{title}</label>
+      <h>{title}</h>
       <Image
         alt={title}
         src={image}
         width={width / 4}
         height={height / 4}
       ></Image>
-      <label>{artist}</label>
+      <p>{artist}</p>
     </>
   );
 }
