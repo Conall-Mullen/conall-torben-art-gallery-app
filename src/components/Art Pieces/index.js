@@ -7,7 +7,7 @@ export default function ArtPieces({ pieces }) {
   return (
     <>
       {pieces.map((piece, index) => (
-        <div key="index">
+        <ul key="index" style="list-style-type : none">
           <Link href={`./art-pieces/${piece.slug}`}>
             <ArtPiecePreview
               image={piece.imageSource}
@@ -17,7 +17,7 @@ export default function ArtPieces({ pieces }) {
               height={piece.dimensions.height}
             />
           </Link>
-        </div>
+        </ul>
       ))}
     </>
   );
