@@ -39,7 +39,7 @@ export default function App({ Component, pageProps }) {
       );
     }
   }, [data]);
-  console.log("info", artPiecesInfo)
+  
 
   return (
     <>
