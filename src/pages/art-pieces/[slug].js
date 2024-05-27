@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import ArtPieceDetail from "@/src/components/Art Piece Details";
 
-export default function PieceDetail({ pieces }) {
+export default function PieceDetail({ pieces, onSubmitComment }) {
   return (
     <>
-      <ArtPieceDetail pieces={pieces} />
+      <ArtPieceDetail pieces={pieces} onSubmitComment={onSubmitComment} />
     </>
   );
 }

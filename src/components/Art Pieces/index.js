@@ -2,12 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import ArtPiecePreview from "../Art Piece Preview";
 
-export default function ArtPieces({ pieces }) {
+export default function ArtPieces({ pieces, onSubmitComment }) {
   return (
     <>
       {pieces.map((piece, index) => (
         <ul key="index">
-
           <Link href={`./art-pieces/${piece.slug}`}>
             <ArtPiecePreview
               image={piece.imageSource}

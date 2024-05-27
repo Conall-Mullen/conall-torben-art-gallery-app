@@ -4,11 +4,18 @@ import ArtPiecePreview from "../Art Piece Preview";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CommentForm({ piecesInfo }) {
+export default function CommentForm({ piecesInfo, onSubmitComment, slug }) {
   return (
     <>
-      <label htmlFor="comment form">Comments: </label>
-      <form name="comment form"></form>
+      <form
+        onSubmit={() => {
+          onSubmitComment(event, slug);
+        }}
+      >
+        <label htmlFor="comment form">Leave a comment: </label>
+        <input type="text" name="comment form"></input>
+        <button type="submit">Submit</button>
+      </form>
     </>
   );
 }
