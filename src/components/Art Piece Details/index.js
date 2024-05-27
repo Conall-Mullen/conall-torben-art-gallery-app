@@ -3,6 +3,7 @@ import ArtPieces from "../Art Pieces";
 import ArtPiecePreview from "../Art Piece Preview";
 import Image from "next/image";
 import Link from "next/link";
+import CommentForm from "../Comment Form";
 
 export default function ArtPieceDetail({ pieces }) {
   const router = useRouter();
@@ -25,6 +26,7 @@ export default function ArtPieceDetail({ pieces }) {
       <h2>{currentPiece.artist}</h2>
       <h3>{currentPiece.year}</h3>
       <p>{currentPiece.genre}</p>
+      <CommentForm />
       <button type="button">
         <Link href={`/art-pieces/`}>{"<"}</Link>
       </button>
