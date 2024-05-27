@@ -7,6 +7,7 @@ test("render a movie", () => {
     <>
       <Image
         src={"/../../assets/test.jpg"}
+        artist={"Leonardo DaVinci"}
         alt={"Mona Lisa"}
         height={2432}
         width={1920}
@@ -17,5 +18,9 @@ test("render a movie", () => {
   const spotlightImage = screen.getByRole("img", {
     imageSource: "/../../assets/test.jpg",
   });
+  const spotlightArtist = screen.getByRole("img", {
+    artist: "Leonardo DaVinci",
+  });
   expect(spotlightImage).toBeInTheDocument();
+  expect(spotlightArtist).toBeInTheDocument();
 });
