@@ -12,11 +12,13 @@
   "dependencies": {
     "@testing-library/react": "^15.0.7",
     "@testing-library/user-event": "^14.5.2",
+    "immer": "^10.1.1",
     "jest-environment-jsdom": "^29.7.0",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "use-immer": "^0.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.6",

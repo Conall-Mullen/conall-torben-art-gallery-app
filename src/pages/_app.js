@@ -3,12 +3,14 @@ import HomePage from ".";
 import useSWR from "swr";
 import Layout from "../components/Layout";
 import ArtPieces from "../components/Art Pieces";
+import { Immer } from "immer";
+import { useImmer } from "use-immer";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
 export default function App({ Component, pageProps }) {
   const [artPieces, setArtPieces] = useState([]);
-  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+  const [artPiecesInfo, setArtPiecesInfo] = useImmer([]);
 
   const fetcher = async (url) => {
     const res = await fetch(url);
