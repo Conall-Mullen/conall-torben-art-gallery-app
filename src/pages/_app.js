@@ -35,7 +35,6 @@ export default function App({ Component, pageProps }) {
     }
   }, [data]);
 
-
   console.log("info", artPiecesInfo);
 
   const handleSubmitComment = (event, slug) => {
@@ -43,9 +42,8 @@ export default function App({ Component, pageProps }) {
 
     const newComment = event.target.elements[0].value;
 
-    // Find the index of the object with the matching slug
-    const index = artPiecesInfo.findIndex((piece) => piece.name === slug);
-
+    const index = artPieces.findIndex((piece) => piece.name === slug);
+    console.log("comments", comments);
 
     if (index !== -1) {
       // Object found, update its comments
@@ -55,7 +53,6 @@ export default function App({ Component, pageProps }) {
           ...updatedInfo[index],
           comment: [...updatedInfo[index].comment, newComment],
         };
-        return updatedInfo;
       });
     } else {
       // Object not found, create a new one
@@ -68,7 +65,31 @@ export default function App({ Component, pageProps }) {
         },
       ]);
     }
+
+    // const info = artPiecesInfo.find((artPiece) => artPiece.slug === slug);
+    // If the art piece is in the array, add the submitted comments
+    // if (info) {
+    //   const newInfo = artPiecesInfo.map((artPieceInfo) => {
+    //     if (artPieceInfo.slug === slug) {
+    //       if (artPiecesInfo.comments) {
+    //         return {
+    //           ...artPieceInfo,
+    //           comments: [...artPieceInfo.comments, newComment],
+    //         };
+    //       } else {
+    //         return { ...artPieceInfo, comments: [newComment] };
+    //       }
+    //     } else {
+    //       return artPieceInfo;
+    //     }
+    //   });
+    //   setArtPiecesInfo(newInfo);
+    // } else {
+    //   const newInfo = [...artPiecesInfo, { slug, comments: [newComment] }];
+    //   setArtPiecesInfo(newInfo);
+    // }
   };
+
   return (
     <>
       {/* if the array is filled with data then return the componenets and drill the props if not return a loading screen */}

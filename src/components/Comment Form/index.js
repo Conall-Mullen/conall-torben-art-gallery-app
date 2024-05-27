@@ -9,7 +9,7 @@ export default function CommentForm({ piecesInfo, onSubmitComment, slug }) {
     <>
       <form
         onSubmit={() => {
-          onSubmitComment(event, slug);
+          onSubmitComment(event.target.elements[0].value, slug);
         }}
       >
         <label htmlFor="comment form">Leave a comment: </label>
