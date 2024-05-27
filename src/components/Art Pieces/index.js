@@ -3,7 +3,6 @@ import Link from "next/link";
 import ArtPiecePreview from "../Art Piece Preview";
 
 export default function ArtPieces({ pieces }) {
-  console.log("pieces", pieces);
   return (
     <>
       {pieces.map((piece, index) => (

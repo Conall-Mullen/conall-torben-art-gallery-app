@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import Spotlight from ".";
+import { ArtPieceDetails } from ".";
 import Image from "next/image";
 
-test("render an image", () => {
+test("render an image and it's information", () => {
   render(
     <>
       <Image
@@ -15,12 +15,13 @@ test("render an image", () => {
     </>
   );
 
-  const spotlightImage = screen.getByRole("img", {
+  const artPieceDetailsImage = screen.getByRole("img", {
     imageSource: "/../../assets/test.jpg",
   });
-  const spotlightArtist = screen.getByRole("img", {
+  const artPieceDetailsTitle = screen.getByRole("img", {});
+  const artPieceDetailsArtist = screen.getByRole("img", {
     artist: "Leonardo DaVinci",
   });
-  expect(spotlightImage).toBeInTheDocument();
-  expect(spotlightArtist).toBeInTheDocument();
+  expect(artPieceDetailsImage).toBeInTheDocument();
+  expect(artPieceDetailsArtist).toBeInTheDocument();
 });
