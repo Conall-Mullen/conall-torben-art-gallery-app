@@ -28,8 +28,6 @@ export default function App({ Component, pageProps }) {
 
   const { data, isLoading, error } = useSWR(URL, fetcher);
 
-  console.log(artPieces);
-
   useEffect(() => {
     if (data) {
       setArtPieces(data);
@@ -42,7 +40,7 @@ export default function App({ Component, pageProps }) {
     }
   }, [data]);
 
-  console.log("info", artPiecesInfo);
+
   return (
     <>
       {/* if the array is filled with data then return the componenets and drill the props if not return a loading screen */}
