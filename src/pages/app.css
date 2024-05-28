@@ -1,9 +1,10 @@
 * {
-  color: gray;
-  background-color: white;
+  color: #403d39;
+  background-color: #fffefe;
   font-family: Helvetica, sans-serif;
   box-sizing: content-box;
 }
+
 .art-piece-preview {
   display: flex;
   flex-direction: column;
@@ -15,6 +16,11 @@
   flex-direction: column;
   align-items: center;
 }
+
+.art-piece-detail_heading {
+  align-tracks: left;
+}
+
 .comment-form {
   display: flex;
   flex-direction: column;
@@ -31,6 +37,11 @@
   width: 100px;
   padding: 0.5em;
 }
+
+.favorite-button {
+  border: none;
+}
+
 .nav-bar {
   display: flex;
   flex-direction: column;

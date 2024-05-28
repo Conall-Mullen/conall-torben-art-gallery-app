@@ -22,10 +22,6 @@ export default function ArtPiecePreview({
         height={height / 4}
       ></Image>
       <p>{artist}</p>
-      {/* <button type="button" onClick={() => onToggleFavorite(pieceSlug)}>
-        test Favorite Button
-      </button> */}
-
       <FavoriteButton
         isFavorite={isFavorite}
         pieceSlug={pieceSlug}

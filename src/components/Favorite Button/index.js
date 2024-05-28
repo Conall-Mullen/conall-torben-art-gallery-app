@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function FavoriteButton({ onClick, isFavorite }) {
   return (
-    <button type="button" onClick={onClick}>
+    <button type="button" onClick={onClick} className="favorite-button">
       {isFavorite ? (
         <Image
           src={heartIconFilled}
