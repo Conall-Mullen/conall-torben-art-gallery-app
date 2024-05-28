@@ -1,0 +1,45 @@
+* {
+  color: gray;
+  background-color: white;
+  font-family: Helvetica, sans-serif;
+  box-sizing: content-box;
+}
+.art-piece-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em;
+}
+.art-piece-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  gap: 10px;
+}
+.comment-form_input {
+  border-radius: 5px;
+  width: 250px;
+}
+.comment-form_submit-button {
+  border-radius: 5px;
+  width: 100px;
+  padding: 0.5em;
+}
+.nav-bar {
+  display: flex;
+  flex-direction: column;
+  bottom: 2em;
+  position: fixed;
+  flex-direction: column;
+}
+.spotlight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

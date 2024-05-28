@@ -14,7 +14,7 @@ export default function ArtPiecePreview({
 }) {
   return (
     <>
-      <h>{title}</h>
+      <h2>{title}</h2>
       <Image
         alt={title}
         src={image}

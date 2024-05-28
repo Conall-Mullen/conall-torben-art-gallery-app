@@ -18,6 +18,7 @@ export default function PieceDetail({
         onToggleFavorite={onToggleFavorite}
         onSubmitComment={onSubmitComment}
         piecesInfo={piecesInfo}
+        className="art-piece-detail"
       />
     </>
   );
