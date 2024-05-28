@@ -61,6 +61,7 @@ export default function App({ Component, pageProps }) {
         },
       ]);
     }
+    event.target.reset();
   };
 
   return (
