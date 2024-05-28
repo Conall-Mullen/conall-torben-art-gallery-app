@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import ArtPiecePreview from "../Art Piece Preview";
 import Image from "next/image";
+import FavoriteButton from "../Favorite Button";
 
 test("renders the art pieces' image", () => {
   render(
@@ -43,4 +44,10 @@ test("renders the art pieces' artist", () => {
   );
   const artPieceArtist = screen.getByText("Steve Johnson");
   expect(artPieceArtist).toBeInTheDocument();
+});
+
+test("renders the FavoriteButton", () => {
+  render(<FavoriteButton />);
+  const favoriteButton = screen.getByRole("button");
+  expect(favoriteButton).toBeInTheDocument();
 });

@@ -10,7 +10,7 @@ const URL = "https://example-apis.vercel.app/api/art";
 
 export default function App({ Component, pageProps }) {
   const [artPieces, setArtPieces] = useState([]);
-  const [artPiecesInfo, setArtPiecesInfo] = useImmer([]);
+  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
 
   const fetcher = async (url) => {
     const res = await fetch(url);
@@ -29,17 +29,43 @@ export default function App({ Component, pageProps }) {
   const { data, isLoading, error } = useSWR(URL, fetcher);
 
   useEffect(() => {
+    // Conall: do we still need this?
     if (data) {
       setArtPieces(data);
-      setArtPiecesInfo(
-        artPieces.map((artPiece) => ({
-          name: artPiece.slug,
-          isFavourite: false,
-        }))
-      );
+      // setArtPiecesInfo(
+      //   artPieces.map((artPiece) => ({
+      //     name: artPiece.slug,
+      //     isFavourite: false,
+      //     comments: [""],
+      //   }))
+      // );
     }
   }, [data]);
 
+  function handleToggleFavorite(slug) {
+    const index = artPiecesInfo.findIndex((piece) => piece.name === slug);
+    console.log("toggling");
+    if (index !== -1) {
+      // Object found, update its comments
+      setArtPiecesInfo((prevState) => {
+        const updatedInfo = [...prevState];
+        updatedInfo[index] = {
+          ...updatedInfo[index],
+          favorite: !updatedInfo[index].favorite,
+        };
+        return updatedInfo;
+      });
+    } else {
+      // Object not found, create a new one
+      setArtPiecesInfo([
+        ...artPiecesInfo,
+        {
+          name: slug,
+          favorite: true,
+        },
+      ]);
+    }
+  }
 
   return (
     <>
@@ -50,6 +76,7 @@ export default function App({ Component, pageProps }) {
             {...pageProps}
             pieces={artPieces}
             piecesInfo={artPiecesInfo}
+            onToggleFavorite={handleToggleFavorite}
           />
           <Layout pieces={artPieces} piecesInfo={artPiecesInfo} />
         </>

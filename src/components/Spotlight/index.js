@@ -1,18 +1,25 @@
 import React from "react";
 import Image from "next/image";
+import FavoriteButton from "../Favorite Button";
 
-export default function Spotlight({ pieces }) {
-  console.log("spotlight pieces", pieces);
-  const thisPiece = pieces[Math.floor(Math.random() * pieces.length)];
+export default function Spotlight({
+  image,
+  artist,
+  height,
+  width,
+  piecesInfo,
+  isFavorite,
+  onToggleFavorite,
+}) {
   return (
     <>
-      <Image
-        src={thisPiece.imageSource}
-        alt={thisPiece.genre}
-        height={thisPiece.dimensions.height / 4}
-        width={thisPiece.dimensions.width / 4}
+      <Image src={image} alt={artist} height={height / 4} width={width / 4} />
+      <h3>{artist}</h3>
+      <FavoriteButton
+        piecesInfo={piecesInfo}
+        isFavorite={isFavorite}
+        onClick={onToggleFavorite}
       />
-      <h3>{thisPiece.artist}</h3>
     </>
   );
 }
