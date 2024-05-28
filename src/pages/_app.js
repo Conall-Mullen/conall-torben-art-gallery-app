@@ -35,15 +35,12 @@ export default function App({ Component, pageProps }) {
     }
   }, [data]);
 
-  console.log("info", artPiecesInfo);
-
   const handleSubmitComment = (event, slug) => {
     event.preventDefault();
 
     const newComment = event.target.elements[0].value;
 
-    const index = artPieces.findIndex((piece) => piece.name === slug);
-    console.log("comments", comments);
+    const index = artPieces.findIndex((piece) => piece.slug === slug);
 
     if (index !== -1) {
       // Object found, update its comments
@@ -65,7 +62,7 @@ export default function App({ Component, pageProps }) {
         },
       ]);
     }
-
+    console.log("comments", artPiecesInfo);
     // const info = artPiecesInfo.find((artPiece) => artPiece.slug === slug);
     // If the art piece is in the array, add the submitted comments
     // if (info) {

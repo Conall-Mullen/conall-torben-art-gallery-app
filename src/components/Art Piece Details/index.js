@@ -18,7 +18,7 @@ export default function ArtPieceDetail({
     (pieceInfo) => pieceInfo.slug === slug
   )?.comments;
   const currentPiece = pieces.find((piece) => piece.slug === slug);
-  console.log("info for details", piecesInfo);
+
   return (
     <>
       <Image
