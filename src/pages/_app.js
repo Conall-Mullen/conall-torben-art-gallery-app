@@ -3,8 +3,6 @@ import HomePage from ".";
 import useSWR from "swr";
 import Layout from "../components/Layout";
 import ArtPieces from "../components/Art Pieces";
-import { Immer } from "immer";
-import { useImmer } from "use-immer";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -29,22 +27,24 @@ export default function App({ Component, pageProps }) {
   const { data, isLoading, error } = useSWR(URL, fetcher);
 
   useEffect(() => {
-    // Conall: do we still need this?
     if (data) {
-      setArtPieces(data);
-      // setArtPiecesInfo(
-      //   artPieces.map((artPiece) => ({
-      //     name: artPiece.slug,
-      //     isFavourite: false,
-      //     comments: [""],
-      //   }))
-      // );
-    }
+      setArtPieces(data);}
   }, [data]);
 
   function handleToggleFavorite(slug) {
     const index = artPiecesInfo.findIndex((piece) => piece.name === slug);
     console.log("toggling");
+    }
+  }, [data]);
+
+  const handleSubmitComment = (event, slug) => {
+    event.preventDefault();
+
+    const newComment = event.target.elements[0].value;
+
+    // Find the index of the object with the matching slug
+    const index = artPiecesInfo.findIndex((piece) => piece.name === slug);
+
     if (index !== -1) {
       // Object found, update its comments
       setArtPiecesInfo((prevState) => {
@@ -52,20 +52,27 @@ export default function App({ Component, pageProps }) {
         updatedInfo[index] = {
           ...updatedInfo[index],
           favorite: !updatedInfo[index].favorite,
+          comment: [...updatedInfo[index].comment, newComment],
         };
         return updatedInfo;
       });
     } else {
       // Object not found, create a new one
+
       setArtPiecesInfo([
         ...artPiecesInfo,
         {
           name: slug,
           favorite: true,
+comment: [newComment],
         },
       ]);
     }
   }
+    }
+    event.target.reset();
+  };
+
 
   return (
     <>
@@ -76,7 +83,11 @@ export default function App({ Component, pageProps }) {
             {...pageProps}
             pieces={artPieces}
             piecesInfo={artPiecesInfo}
+
             onToggleFavorite={handleToggleFavorite}
+
+            onSubmitComment={handleSubmitComment}
+
           />
           <Layout pieces={artPieces} piecesInfo={artPiecesInfo} />
         </>

@@ -4,24 +4,30 @@ import ArtPiecePreview from "../Art Piece Preview";
 import Image from "next/image";
 import Link from "next/link";
 import CommentForm from "../Comment Form";
+
 import FavoriteButton from "../Favorite Button";
+import Comments from "../Comments";
 
 export default function ArtPieceDetail({
   pieces,
   piecesInfo,
   onToggleFavorite,
-  pieceSlug,
-}) {
+  onSubmitComment,
+  //pieceSlug,)} {
+
   const router = useRouter();
+
   const { slug } = router.query;
 
   const currentPiece = pieces.find((piece) => piece.slug === slug);
+
   const isFavorite = piecesInfo.find((piece) => piece.name === slug)?.favorite;
-  console.log("piecesInfo:::::::", piecesInfo);
-  console.log("current piece", currentPiece);
   console.log("isFavoritee in detail", isFavorite);
 
-  const { name, image } = currentPiece;
+
+  const comments = piecesInfo?.find(
+    (pieceInfo) => pieceInfo.name === slug
+  )?.comment;
 
   return (
     <>
@@ -35,11 +41,19 @@ export default function ArtPieceDetail({
       <h2>{currentPiece.artist}</h2>
       <h3>{currentPiece.year}</h3>
       <p>{currentPiece.genre}</p>
+
       <FavoriteButton
         onClick={() => onToggleFavorite(slug)}
         isFavorite={isFavorite}
       />
-      <CommentForm />
+    
+
+      <CommentForm
+        onSubmitComment={() => onSubmitComment(event, slug)}
+        slug={currentPiece.slug}
+      />
+      {comments?.length > 0 ? <Comments comments={comments} /> : ""}
+
       <button type="button">
         <Link href={`/art-pieces/`}>{"<"}</Link>
       </button>

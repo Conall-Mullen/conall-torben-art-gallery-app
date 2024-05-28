@@ -4,16 +4,20 @@ import ArtPiecePreview from "../Art Piece Preview";
 import Spotlight from "../Spotlight";
 import FavoriteButton from "../Favorite Button";
 
+
 export default function ArtPieces({
   pieces,
   piecesInfo,
   onToggleFavorite,
   isFavorite,
+  onSubmitComment
 }) {
+
   return (
     <>
       {pieces.map((piece) => (
         <ul key="index">
+
           <ArtPiecePreview
             image={piece.imageSource}
             title={piece.name}
@@ -27,6 +31,8 @@ export default function ArtPieces({
             piecesInfo={piecesInfo}
           />
           <Link href={`./art-pieces/${piece.slug}`}>more info</Link>
+
+
         </ul>
       ))}
     </>
