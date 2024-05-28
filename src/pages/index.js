@@ -14,6 +14,7 @@ export default function SpotlightPage({
   console.log("isFavorite????", isFavorite);
   return (
     <>
+      <h1>ART GALLERY APP</h1>
       <Spotlight
         pieces={pieces}
         image={randomPiece.imageSource}

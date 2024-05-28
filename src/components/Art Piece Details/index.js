@@ -29,33 +29,36 @@ export default function ArtPieceDetail({
   )?.comment;
 
   return (
-    <div className="art-piece-detail">
-      <Image
-        src={currentPiece.imageSource}
-        alt={currentPiece.name}
-        width={currentPiece.dimensions.width / 4}
-        height={currentPiece.dimensions.height / 4}
-      ></Image>
-      <h1>{currentPiece.name}</h1>
-      <h2>{currentPiece.artist}</h2>
-      <h3>{currentPiece.year}</h3>
-      <p>{currentPiece.genre}</p>
+    <>
+      <h1 className="art-piece-detail_heading">ART GALLERY APP</h1>
+      <div className="art-piece-detail">
+        <Image
+          src={currentPiece.imageSource}
+          alt={currentPiece.name}
+          width={currentPiece.dimensions.width / 4}
+          height={currentPiece.dimensions.height / 4}
+        ></Image>
+        <h1>
+          {currentPiece.name} ({currentPiece.year})
+        </h1>
 
-      <FavoriteButton
-        onClick={() => onToggleFavorite(slug)}
-        isFavorite={isFavorite}
-        data-testid="button-element"
-      />
+        <p>
+          {currentPiece.genre} by {currentPiece.artist}
+        </p>
+        <FavoriteButton
+          onClick={() => onToggleFavorite(slug)}
+          isFavorite={isFavorite}
+          data-testid="button-element"
+        />
 
-      <CommentForm
-        onSubmitComment={() => onSubmitComment(event, slug)}
-        slug={currentPiece.slug}
-      />
-      {comments?.length > 0 ? <Comments comments={comments} /> : ""}
+        <CommentForm
+          onSubmitComment={() => onSubmitComment(event, slug)}
+          slug={currentPiece.slug}
+        />
+        {comments?.length > 0 ? <Comments comments={comments} /> : ""}
 
-      <button type="button">
-        <Link href={`/art-pieces/`}>{"<"}</Link>
-      </button>
-    </div>
+        <Link href={`/art-pieces/`}>{"back"}</Link>
+      </div>
+    </>
   );
 }

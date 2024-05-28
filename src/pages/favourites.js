@@ -1,7 +1,8 @@
 export default function Favourites() {
   return (
     <>
-      <h1>Favourites</h1>
+      <h1>ART GALLERY APP</h1>
+      <h>Favourites</h>
     </>
   );
 }

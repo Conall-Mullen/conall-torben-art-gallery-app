@@ -8,6 +8,7 @@ export default function ArtPiecesPage({
 }) {
   return (
     <>
+      <h1>ART GALLERY APP</h1>
       <ArtPieces
         pieces={pieces}
         piecesInfo={piecesInfo}
