@@ -19,6 +19,7 @@ export default function Spotlight({
         piecesInfo={piecesInfo}
         isFavorite={isFavorite}
         onClick={onToggleFavorite}
+        data-testid="button-element"
       />
     </>
   );

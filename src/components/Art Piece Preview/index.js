@@ -30,6 +30,7 @@ export default function ArtPiecePreview({
         isFavorite={isFavorite}
         pieceSlug={pieceSlug}
         onClick={() => onToggleFavorite(pieceSlug)}
+        data-testid="button-element"
       />
     </>
   );
