@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { ArtPieceDetails } from ".";
 import Image from "next/image";
 import Link from "next/link";
+import FavoriteButton from "../Favorite Button";
 
 test("render an image and it's information", () => {
   render(
@@ -41,4 +42,10 @@ test("render an image and it's information", () => {
   expect(artPieceDetailsYear).toBeInTheDocument();
   expect(artPieceDetailsGenre).toBeInTheDocument();
   expect(backButton).toBeInTheDocument();
+});
+
+test("renders the FavoriteButton", () => {
+  render(<FavoriteButton />);
+  const favoriteButton = screen.getByRole("button");
+  expect(favoriteButton).toBeInTheDocument();
 });

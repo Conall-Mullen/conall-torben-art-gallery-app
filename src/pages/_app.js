@@ -28,7 +28,12 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     if (data) {
-      setArtPieces(data);
+      setArtPieces(data);}
+  }, [data]);
+
+  function handleToggleFavorite(slug) {
+    const index = artPiecesInfo.findIndex((piece) => piece.name === slug);
+    console.log("toggling");
     }
   }, [data]);
 
@@ -46,23 +51,28 @@ export default function App({ Component, pageProps }) {
         const updatedInfo = [...prevState];
         updatedInfo[index] = {
           ...updatedInfo[index],
+          favorite: !updatedInfo[index].favorite,
           comment: [...updatedInfo[index].comment, newComment],
         };
         return updatedInfo;
       });
     } else {
       // Object not found, create a new one
-      setArtPiecesInfo((prevState) => [
-        ...prevState,
+
+      setArtPiecesInfo([
+        ...artPiecesInfo,
         {
           name: slug,
-          isFavourite: false,
-          comment: [newComment],
+          favorite: true,
+comment: [newComment],
         },
       ]);
     }
+  }
+    }
     event.target.reset();
   };
+
 
   return (
     <>
@@ -73,7 +83,11 @@ export default function App({ Component, pageProps }) {
             {...pageProps}
             pieces={artPieces}
             piecesInfo={artPiecesInfo}
+
+            onToggleFavorite={handleToggleFavorite}
+
             onSubmitComment={handleSubmitComment}
+
           />
           <Layout pieces={artPieces} piecesInfo={artPiecesInfo} />
         </>
