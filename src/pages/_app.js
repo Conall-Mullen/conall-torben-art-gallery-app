@@ -51,7 +51,8 @@ export default function App({ Component, pageProps }) {
         ...prevState,
         {
           name: slug,
-          isFavourite: false,
+          favorite: false,
+          comment: [],
         },
       ]);
     }
@@ -82,7 +83,7 @@ export default function App({ Component, pageProps }) {
         ...artPiecesInfo,
         {
           name: slug,
-
+          favorite: false,
           comment: [newComment],
         },
       ]);
