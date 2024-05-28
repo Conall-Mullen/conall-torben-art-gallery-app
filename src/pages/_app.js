@@ -57,8 +57,12 @@ export default function App({ Component, pageProps }) {
         ...prevState,
         {
           name: slug,
+
+          isFavourite: true,
+
           favorite: false,
           comment: [],
+
         },
       ]);
     }

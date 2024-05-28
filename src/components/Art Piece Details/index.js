@@ -44,6 +44,7 @@ export default function ArtPieceDetail({
       <FavoriteButton
         onClick={() => onToggleFavorite(slug)}
         isFavorite={isFavorite}
+        data-testid="button-element"
       />
 
       <CommentForm
