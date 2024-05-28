@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Layout from "../components/Layout";
 import ArtPieces from "../components/Art Pieces";
 import useLocalStorageState from "use-local-storage-state";
+import "./app.css";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
@@ -62,7 +63,6 @@ export default function App({ Component, pageProps }) {
 
           favorite: false,
           comment: [],
-
         },
       ]);
     }

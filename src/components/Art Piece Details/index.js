@@ -29,7 +29,7 @@ export default function ArtPieceDetail({
   )?.comment;
 
   return (
-    <>
+    <div className="art-piece-detail">
       <Image
         src={currentPiece.imageSource}
         alt={currentPiece.name}
@@ -56,6 +56,6 @@ export default function ArtPieceDetail({
       <button type="button">
         <Link href={`/art-pieces/`}>{"<"}</Link>
       </button>
-    </>
+    </div>
   );
 }

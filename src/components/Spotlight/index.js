@@ -12,7 +12,7 @@ export default function Spotlight({
   onToggleFavorite,
 }) {
   return (
-    <>
+    <div className="spotlight">
       <Image src={image} alt={artist} height={height / 4} width={width / 4} />
       <h3>{artist}</h3>
       <FavoriteButton
@@ -21,6 +21,6 @@ export default function Spotlight({
         onClick={onToggleFavorite}
         data-testid="button-element"
       />
-    </>
+    </div>
   );
 }

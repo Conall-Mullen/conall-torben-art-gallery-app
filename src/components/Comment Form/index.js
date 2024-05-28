@@ -8,13 +8,20 @@ export default function CommentForm({ piecesInfo, onSubmitComment, slug }) {
   return (
     <>
       <form
+        className="comment-form"
         onSubmit={() => {
           onSubmitComment(event, slug);
         }}
       >
         <label htmlFor="comment form">Leave a comment: </label>
-        <input type="text" name="comment form"></input>
-        <button type="submit">Submit</button>
+        <input
+          type="text"
+          name="comment form"
+          className="comment-form_input"
+        ></input>
+        <button type="submit" className="comment-form_submit-button">
+          Submit
+        </button>
       </form>
     </>
   );
