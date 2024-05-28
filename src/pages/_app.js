@@ -28,23 +28,13 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     if (data) {
-      setArtPieces(data);}
+      setArtPieces(data);
+    }
   }, [data]);
 
   function handleToggleFavorite(slug) {
     const index = artPiecesInfo.findIndex((piece) => piece.name === slug);
     console.log("toggling");
-    }
-  }, [data]);
-
-  const handleSubmitComment = (event, slug) => {
-    event.preventDefault();
-
-    const newComment = event.target.elements[0].value;
-
-    // Find the index of the object with the matching slug
-    const index = artPiecesInfo.findIndex((piece) => piece.name === slug);
-
     if (index !== -1) {
       // Object found, update its comments
       setArtPiecesInfo((prevState) => {
@@ -52,10 +42,39 @@ export default function App({ Component, pageProps }) {
         updatedInfo[index] = {
           ...updatedInfo[index],
           favorite: !updatedInfo[index].favorite,
-          comment: [...updatedInfo[index].comment, newComment],
         };
         return updatedInfo;
       });
+    } else {
+      // Object not found, create a new one
+      setArtPiecesInfo((prevState) => [
+        ...prevState,
+        {
+          name: slug,
+          isFavourite: false,
+        },
+      ]);
+    }
+  }
+
+  const handleSubmitComment = (event, slug) => {
+    event.preventDefault();
+
+    const newComment = event.target.elements[0].value;
+
+    // Find the index of the object with the matching slug
+    const hasComment = artPiecesInfo.find(
+      (piece) => piece.name === slug
+    )?.comment;
+
+    if (hasComment) {
+      // Object found, update its comments
+      const updatedInfo = artPiecesInfo.map((info) =>
+        info.name === slug
+          ? { ...info, comment: [...info.comment, newComment] }
+          : info
+      );
+      setArtPiecesInfo(updatedInfo);
     } else {
       // Object not found, create a new one
 
@@ -63,16 +82,14 @@ export default function App({ Component, pageProps }) {
         ...artPiecesInfo,
         {
           name: slug,
-          favorite: true,
-comment: [newComment],
+
+          comment: [newComment],
         },
       ]);
     }
-  }
-    }
     event.target.reset();
   };
-
+  console.log("artPiecesInfo", artPiecesInfo);
 
   return (
     <>
@@ -83,11 +100,8 @@ comment: [newComment],
             {...pageProps}
             pieces={artPieces}
             piecesInfo={artPiecesInfo}
-
             onToggleFavorite={handleToggleFavorite}
-
             onSubmitComment={handleSubmitComment}
-
           />
           <Layout pieces={artPieces} piecesInfo={artPiecesInfo} />
         </>

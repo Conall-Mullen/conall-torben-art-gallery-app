@@ -13,8 +13,8 @@ export default function ArtPieceDetail({
   piecesInfo,
   onToggleFavorite,
   onSubmitComment,
-  //pieceSlug,)} {
-
+  pieceSlug,
+}) {
   const router = useRouter();
 
   const { slug } = router.query;
@@ -23,7 +23,6 @@ export default function ArtPieceDetail({
 
   const isFavorite = piecesInfo.find((piece) => piece.name === slug)?.favorite;
   console.log("isFavoritee in detail", isFavorite);
-
 
   const comments = piecesInfo?.find(
     (pieceInfo) => pieceInfo.name === slug
@@ -46,7 +45,6 @@ export default function ArtPieceDetail({
         onClick={() => onToggleFavorite(slug)}
         isFavorite={isFavorite}
       />
-    
 
       <CommentForm
         onSubmitComment={() => onSubmitComment(event, slug)}
