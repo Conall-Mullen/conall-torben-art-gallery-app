@@ -3,12 +3,18 @@ import HomePage from ".";
 import useSWR from "swr";
 import Layout from "../components/Layout";
 import ArtPieces from "../components/Art Pieces";
+import useLocalStorageState from "use-local-storage-state";
 
 const URL = "https://example-apis.vercel.app/api/art";
 
 export default function App({ Component, pageProps }) {
   const [artPieces, setArtPieces] = useState([]);
-  const [artPiecesInfo, setArtPiecesInfo] = useState([]);
+  const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
+    "artPiecesInfo",
+    {
+      defaultValue: [],
+    }
+  );
 
   const fetcher = async (url) => {
     const res = await fetch(url);
@@ -51,7 +57,12 @@ export default function App({ Component, pageProps }) {
         ...prevState,
         {
           name: slug,
+
           isFavourite: true,
+
+          favorite: false,
+          comment: [],
+
         },
       ]);
     }
@@ -82,7 +93,7 @@ export default function App({ Component, pageProps }) {
         ...artPiecesInfo,
         {
           name: slug,
-
+          favorite: false,
           comment: [newComment],
         },
       ]);
