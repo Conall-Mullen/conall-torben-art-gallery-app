@@ -29,14 +29,8 @@ export default function App({ Component, pageProps }) {
   useEffect(() => {
     if (data) {
       setArtPieces(data);
-      // setArtPiecesInfo(
-      //   data.map((artPiece) => ())
-      // );
     }
   }, [data]);
-
-
-  console.log("info", artPiecesInfo);
 
   const handleSubmitComment = (event, slug) => {
     event.preventDefault();
@@ -45,7 +39,6 @@ export default function App({ Component, pageProps }) {
 
     // Find the index of the object with the matching slug
     const index = artPiecesInfo.findIndex((piece) => piece.name === slug);
-
 
     if (index !== -1) {
       // Object found, update its comments
@@ -69,6 +62,7 @@ export default function App({ Component, pageProps }) {
       ]);
     }
   };
+
   return (
     <>
       {/* if the array is filled with data then return the componenets and drill the props if not return a loading screen */}
